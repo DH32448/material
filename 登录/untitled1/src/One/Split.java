@@ -1,3 +1,5 @@
+package One;
+
 public class Split {
     public static void main(String[] args) {
         String str = "GET /addPlayer?name=张无忌&age=20&hp=100 HTTP/1.1";

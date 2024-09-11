@@ -1,3 +1,5 @@
+package One;
+
 import java.util.Scanner;
 
 public class DemoAccMan {

@@ -1,3 +1,5 @@
+package One;
+
 public class Account {
     private String phone;
     private String password;
@@ -38,7 +40,7 @@ public class Account {
 
     @Override
     public String toString() {
-        return "Account{" +
+        return "One.Account{" +
                 "手机号：'" + phone + '\'' +
                 ", 密码：='" + password + '\'' +
                 ", 姓名：='" + name + '\'' +
