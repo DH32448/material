@@ -25,13 +25,19 @@ public class AccountManger {
                 return true;
             }
         }
-        throw new Exception("账号不存在或密码错误");
+        throw new Exception("账号不存在或密码错误");//使用throw语句手动抛出异常
     }
 
     //修改密码
-    public void changePass(String newPassword) throws Exception {
-        // 这里需要根据实际情况修改，因为没有全局的account变量
-        throw new UnsupportedOperationException("此功能尚未实现");
+    public void changePass(String newPassword , String oldPassword) throws Exception {
+        for (int i = 0; i < count; i++) {
+            Account account = accounts[i];
+            if (account.getPassword().equals(oldPassword)) {
+                account.setPassword(newPassword);
+                return;
+            }
+        }
+        throw new Exception("账号不存在");
     }
     //注册操作
 
@@ -46,7 +52,7 @@ public class AccountManger {
         }
 
         // 检查手机号码格式
-        if (newAccount.getPhone().length() != 11 || !newAccount.getPhone().matches("\\d+")) {
+        if (newAccount.getPhone().length() != 11 ) {
             throw new Exception("手机号格式错误");
         }
 
