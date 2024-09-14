@@ -1,5 +1,5 @@
 package pkwork;
-
+//https://chat.deepseek.com/coder
 public class DemoPk {
     public static void main(String[] args) {
         System.out.println("创建游戏");
