@@ -1,6 +1,6 @@
 package pkwork;
 
-public class Npc implements Pk{//怪物
+public class Npc implements Pk {//怪物
     private String kind;
     private int attack;  //攻击力
     private int hp;
@@ -59,7 +59,7 @@ public class Npc implements Pk{//怪物
     }
 
     @Override
-    public String  getName() {
+    public String getName() {
         return this.kind;
     }
 
@@ -70,14 +70,32 @@ public class Npc implements Pk{//怪物
 
     @Override
     public void initNpc(int level) {
-         new Npc("二郎显圣真君", 5, 100, 4000);
-
+        new Npc("二郎显圣真君", 5, 100, 4000);
     }
 
     //单次 PK 过程， 允许 PK 输出信息， 但不允许做键盘输入及循环
     @Override
     public boolean fight(Pk p) {
-        return false;
+        if (p instanceof Player) {
+            Player player = (Player) p;
+            if (player.getHp() <= 0) {
+                System.out.println(player.getName() + " 已经被击败！");
+                return false;
+            }
+            System.out.println(this.kind + " 攻击 " + player.getName() + "，造成 " + this.attack + " 点伤害！");
+            player.setHp(player.getHp() - this.attack);
+            if (player.getHp() <= 0) {
+                System.out.println(player.getName() + " 已经被击败！");
+                return false;
+            }
+        } else if (p instanceof Npc) {
+            Npc npc = (Npc) p;
+            if (npc.getHp() <= 0) {
+                System.out.println(npc.getName() + " 已经被击败！");
+                return false;
+            }
+        }
+        return true;
     }
 
     @Override
